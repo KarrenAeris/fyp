@@ -1,19 +1,30 @@
-import React from 'react'
-import { AppButton } from './core/AppButton'
+import React, { useState } from 'react'
+import { StartQuote } from './Quites/StartQuote';
+import { UploadQuote } from './Quites/UploadQuote';
+import { LoadingQuote } from './Quites/LoadingQuote';
+import { PanelQuote } from './Quites/PanelQuote';
 
 export const TheQuotes = () => {
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const quotes = [
+    StartQuote,
+    UploadQuote,
+    LoadingQuote,
+    PanelQuote,
+  ]
+
+  const handleInc = () => {
+    setCurrentPage((prevState) => prevState + 1);
+    console.log(quotes);
+  }
+
   return (
     <section className="container mx-auto h-full p-8">
-      <h1 className="text-3xl font-bold mb-20">Quotes</h1>
-      <div className="flex justify-center items-center w-full h-[70%] rounded-xl bg-gray-400">
-        <div className="flex flex-col text-center gap-3 text-white">
-          <h2>Start a new quote</h2>
-          <span>Find out the price of 3D printing for your project</span>
-          <AppButton className="!bg-white !text-black text-sm !rounded self-center">
-            Find out
-          </AppButton>
-        </div>
-      </div>
+    <h1 className="text-3xl font-bold">Quotes</h1>
+      {React.createElement(quotes[currentPage], {
+        handleInc
+      })}
     </section>
   )
 }

@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export const TheHeader = () => {
   return (
-    <header className="w-full h-16 fixed top-0 bg-black py-5">
+    <header className="w-full h-16 fixed top-0 bg-black py-5 z-10">
       <div className="container center mx-auto flex justify-between items-center px-10">
         <div className="logo">
           <Image
